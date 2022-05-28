@@ -17,12 +17,12 @@ apiRouter.post('/register', asyncHandler(register));
 apiRouter.post('/postUpdateSheet', asyncHandler(postUpdateSheet));
 apiRouter.post('/postCreateFile', asyncHandler(postCreateFile));
 
-apiRouter.get('/getUser', asyncHandler(getUser));
-apiRouter.get('/getListData', asyncHandler(getListData));
-apiRouter.get('/getfoodType', asyncHandler(getfoodType));
-apiRouter.get('/getDailyData', asyncHandler(getDailyData));
-apiRouter.get('/getDetailDataByGid', asyncHandler(getDetailDataByGid));
-apiRouter.get('/getMySheet', asyncHandler( getMySheet));
+apiRouter.post('/getUser', asyncHandler(getUser));
+apiRouter.post('/getListData', asyncHandler(getListData));
+apiRouter.post('/getfoodType', asyncHandler(getfoodType));
+apiRouter.post('/getDailyData', asyncHandler(getDailyData));
+apiRouter.post('/getDetailDataByGid', asyncHandler(getDetailDataByGid));
+apiRouter.post('/getMySheet', asyncHandler( getMySheet));
 
 
 

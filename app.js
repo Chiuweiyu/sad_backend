@@ -13,7 +13,7 @@ app.use(cors());
 
 // parsing
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // central router
 const apiRouter = require("./routes/apiRouter");
