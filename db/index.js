@@ -32,7 +32,6 @@ const init = async () => {
           REFERENCES public.users (user_name) MATCH SIMPLE
           ON UPDATE NO ACTION
           ON DELETE NO ACTION
-          NOT VALID
   )`)
   await pool.query(`CREATE TABLE IF NOT EXISTS public.records(
       record_id SERIAL NOT NULL,
@@ -54,6 +53,12 @@ const init = async () => {
           REFERENCES public.users (user_name) MATCH SIMPLE
           ON UPDATE NO ACTION
           ON DELETE NO ACTION
+  )`)
+  await pool.query(`CREATE TABLE IF NOT EXISTS public.food_tags
+  (
+      tag_id SERIAL NOT NULL,
+      tag_name text COLLATE pg_catalog."default" NOT NULL,
+      CONSTRAINT food_types_pkey PRIMARY KEY (tag_id)
   )`)
 }
 init()
