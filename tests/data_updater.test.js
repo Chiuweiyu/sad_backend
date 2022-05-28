@@ -10,7 +10,7 @@ const mockResponse = () => {
 }
 
 beforeAll(async () => {
-  await new Promise(r => setTimeout(r, 1000))
+  await new Promise(r => setTimeout(r, 500))
   await register({ body: { userName: 'user', password: 'password' } }, mockResponse(), {})
 })
 
