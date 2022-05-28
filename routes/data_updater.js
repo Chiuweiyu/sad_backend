@@ -37,6 +37,9 @@ const postCreateFile = async (req, res, next) => {
     }
 
     let create_time = (new Date(Date.now()) + '').split(" ")
+    if (process.env.NODE_ENV === 'test') {
+        create_time = (new Date('2022-03-31 00:00:00') + '').split(" ")
+    }
     let record_date = create_time[3] + "-" + create_time[1] + "-" + create_time[2];
     let record_time = create_time[4];
     let photo = image;

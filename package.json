@@ -74,7 +74,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "test": "jest --runInBand"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
