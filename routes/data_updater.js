@@ -1,6 +1,6 @@
 const db = require("../db");
 const DatabaseError = require("../errors/DatabaseError");
-const {_getMySheet} = require('./info_getter.js');
+const {_getMySheet, _getfoodType} = require('./info_getter.js');
 
 
 
@@ -33,6 +33,14 @@ const postCreateFile = async (req, res, next) => {
     let restaurant_name = restaurant;
     let food_name = food;
     let tag = type;
+    let exist_food_tag = await _getfoodType(withTag=false);
+    if(exist_food_tag.indexOf(tag) == -1){
+        //add food type
+        await db.query("INSERT INTO food_tags(tag_name) VALUES ($1)", [tag]).catch((err) => {
+            throw new DatabaseError("Something Went Wrong", err);
+        });
+    }
+
     let mysheet = await _getMySheet(userName);
     let sheet_value = {}
     for(let i = 0; i < mysheet.length; i++){
@@ -72,3 +80,4 @@ module.exports = {
     postUpdateSheet,
     postCreateFile
 };
+

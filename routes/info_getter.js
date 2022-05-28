@@ -94,20 +94,35 @@ const getListData  = async (req, res, next)  => {
 
 
 const getfoodType = async (req, res, next)  => {
+    to_return = await _getfoodType(withTag=true);
+    res.json(to_return)
+}
 
-    let cmd = "select DISTINCT tag FROM records";
+const _getfoodType = async (withTag=false) => {
+
+    let cmd = "select * FROM food_tags";
    
     let tags = await db.query(cmd).catch((err) => {
         throw new DatabaseError("Something Went Wrong", err);
     });
     to_return = []
     tags.rows.forEach(element => {
-        to_return.push(element.tag);
+        if(withTag){
+            to_return.push({
+                "title": element.tag_name,
+                "gid": element.tag_id
+            });
+        }
+        else{
+            to_return.push(element.tag_name);
+        }
     });
-   
-    res.json(to_return)
-    
+
+    return to_return;
 }
+
+
+
 
 const getDailyData  = async (req, res, next)  => {
     let {userName, foodKeyword, startDay, endDay} = req.body;
@@ -296,6 +311,7 @@ module.exports = {
     getUser,
     getListData,
     getfoodType,
+    _getfoodType,
     getDailyData,
     getDetailDataByGid,
     getMySheet,
