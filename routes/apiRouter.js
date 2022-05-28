@@ -1,8 +1,8 @@
 const apiRouter = require('express').Router();
 
-const {verify_login, register} = require('./account');
-const {getUser, getListData, getfoodType, getDailyData, getDetailDataByGid, getMySheet} = require('./info_getter.js');
-const {postUpdateSheet,postCreateFile} = require('./data_updater.js')
+const { verify_login, register } = require('./account');
+const { getUser, getListData, getfoodType, getDailyData, getDetailDataByGid, getMySheet } = require('./info_getter.js');
+const { postUpdateSheet, postCreateFile } = require('./data_updater.js')
 const DatabaseError = require('../errors/DatabaseError');
 const asyncHandler = require('../errors/asyncHandler');
 
@@ -22,7 +22,7 @@ apiRouter.post('/getListData', asyncHandler(getListData));
 apiRouter.post('/getfoodType', asyncHandler(getfoodType));
 apiRouter.post('/getDailyData', asyncHandler(getDailyData));
 apiRouter.post('/getDetailDataByGid', asyncHandler(getDetailDataByGid));
-apiRouter.post('/getMySheet', asyncHandler( getMySheet));
+apiRouter.post('/getMySheet', asyncHandler(getMySheet));
 
 
 
