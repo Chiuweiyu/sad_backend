@@ -1,2 +1,4 @@
 node_modules
 .env
+jest-html-reporters-attach
+jest-report.html
